@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="City Dynamics: GDP & Productivity Insights — An interactive analytics dashboard exploring urban economic performance, sector analysis, and policy impact." />
+    <meta name="keywords" content="GDP, Productivity, City Dynamics, Analytics, Power BI, Dashboard, Urban Economics" />
+    <meta name="author" content="City Dynamics Team" />
+    <title>UrbanPulse Analytics — GDP &amp; Productivity Insights</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ========== PRELOADER ========== -->
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">
+                <div class="brand-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+                UrbanPulse Analytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#insights">Insights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stakeholders">Stakeholders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link nav-cta" href="#dashboard"><i class="bi bi-grid-1x2-fill"></i> Live
+                            Dashboard</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center ms-3 gap-2">
+                    <button id="themeToggle" class="btn btn-outline-light">
+                        🌙
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- ========== 1. HERO SECTION ========== -->
+    <section id="hero">
+        <!-- Background effects -->
+        <div class="hero-bg-grid"></div>
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="hero-glow-3"></div>
+
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left Content -->
+                <div class="col-lg-6 hero-content">
+                    <div class="hero-tag">
+                        <span class="dot"></span>
+                        <span class="hero-tag-text" data-text="Final Year Engineering Project">Final Year Engineering
+                            Project</span>
+                    </div>
+                    <h1 class="hero-title">
+                        City Dynamics:<br />
+                        <span class="gradient-text">GDP &amp; Productivity</span><br />
+                        Insights
+                    </h1>
+                    <p class="hero-subtitle">
+                        Unlocking urban economic patterns through interactive data visualization.
+                        Explore GDP trends, sector productivity, and policy impact across 18 major Indian cities.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#dashboard" class="btn-hero-primary">
+                            <i class="bi bi-grid-1x2-fill"></i> Explore Dashboard
+                        </a>
+                        <a href="#about" class="btn-hero-secondary">
+                            <i class="bi bi-info-circle"></i> Learn More
+                        </a>
+                    </div>
+                    <div class="hero-stats-row">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number"><span data-count="18" data-suffix="">0</span></div>
+                            <div class="hero-stat-label">Cities Analyzed</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number"><span data-count="30" data-suffix="+">0+</span></div>
+                            <div class="hero-stat-label">Data Metrics</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number"><span data-count="4" data-suffix="">0</span></div>
+                            <div class="hero-stat-label">Key Sectors</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="col-lg-6 hero-visual d-none d-lg-block">
+                    <div class="hero-dashboard-preview">
+                        <!-- Window chrome -->
+                        <div class="preview-header">
+                            <div class="preview-dot red"></div>
+                            <div class="preview-dot yellow"></div>
+                            <div class="preview-dot green"></div>
+                        </div>
+                        <!-- Mini dashboard -->
+                        <div class="preview-body">
+                            <div class="preview-card">
+                                <div class="preview-card-label">TOTAL GDP (2024)</div>
+                                <div class="preview-card-value" style="font-size: 1.2rem;">₹185.62 Lakh Cr</div>
+                                <div class="preview-card-change"><i class="bi bi-arrow-up-short"></i> 8.67% YoY (vs
+                                    2023)</div>
+                            </div>
+                            <div class="preview-card">
+                                <div class="preview-card-label">PRODUCTIVITY INDEX (2024)</div>
+                                <div class="preview-card-value" style="font-size: 1.2rem;">124.8</div>
+                                <div class="preview-card-change"><i class="bi bi-arrow-up-short"></i> 5.21% YoY (vs
+                                    2023)</div>
+                            </div>
+                            <div class="preview-chart"
+                                style="position: relative; padding-top: 30px; padding-bottom: 24px;">
+                                <div
+                                    style="position: absolute; top: 12px; left: 20px; font-size: 0.85rem; font-weight: 700; color: #fff;">
+                                    GDP Trend (Lakh Crore)</div>
+                                <div
+                                    style="position: absolute; top: 14px; right: 20px; font-size: 0.6rem; color: var(--text-muted);">
+                                    *2025 value is estimated.</div>
+
+                                <div class="chart-bar" data-height="40%" style="height:0; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: #fff;">133.61</span>
+                                    <span
+                                        style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--text-muted);">2019</span>
+                                </div>
+                                <div class="chart-bar" data-height="45%" style="height:0; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: #fff;">136.87</span>
+                                    <span
+                                        style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--text-muted);">2020</span>
+                                </div>
+                                <div class="chart-bar" data-height="52%" style="height:0; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: #fff;">144.36</span>
+                                    <span
+                                        style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--text-muted);">2021</span>
+                                </div>
+                                <div class="chart-bar" data-height="60%" style="height:0; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: #fff;">153.27</span>
+                                    <span
+                                        style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--text-muted);">2022</span>
+                                </div>
+                                <div class="chart-bar" data-height="72%" style="height:0; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: #fff;">170.79</span>
+                                    <span
+                                        style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--text-muted);">2023</span>
+                                </div>
+                                <div class="chart-bar" data-height="82%" style="height:0; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: #fff;">185.62</span>
+                                    <span
+                                        style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--text-muted);">2024</span>
+                                </div>
+                                <div class="chart-bar" data-height="92%" style="height:0; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: #fff;">197.48</span>
+                                    <span
+                                        style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--text-muted);">2025*</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating badges -->
+                    <div class="floating-badge badge-1">
+                        <div class="badge-icon blue"><i class="bi bi-building"></i></div>
+                        <div>
+                            <div style="font-weight:600; line-height: 1.2; margin-bottom: 2px;">Highest GDP City</div>
+                            <div style="color:#fff; font-size: 0.85rem; font-weight: 700; line-height: 1.2;">Mumbai
+                            </div>
+                            <div style="color:var(--primary-light);font-size:0.7rem; line-height: 1.2;">₹36.47 Lakh Cr
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <div class="badge-icon green"><i class="bi bi-graph-up-arrow"></i></div>
+                        <div>
+                            <div style="font-weight:600; line-height: 1.2; margin-bottom: 2px;">Top Performing City
+                            </div>
+                            <div style="color:#fff; font-size: 0.85rem; font-weight: 700; line-height: 1.2;">Hyderabad
+                            </div>
+                            <div style="color:var(--success);font-size:0.7rem; line-height: 1.2;">GDP Growth: +12.34%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 2. ABOUT SECTION ========== -->
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 fade-in-left">
+                    <span class="section-badge"><i class="bi bi-info-circle-fill"></i> About The Project</span>
+                    <h2 class="section-title">Understanding Urban<br />Economic Dynamics</h2>
+                    <div class="about-content">
+                        <p>
+                            <strong>City Dynamics: GDP &amp; Productivity Insights</strong> is a comprehensive data
+                            analytics project
+                            built as a final-year engineering capstone. It leverages interactive Power BI dashboards to
+                            explore how
+                            cities generate wealth, sustain growth, and drive productivity across diverse economic
+                            sectors.
+                        </p>
+                        <p>
+                            The project analyzes real-world datasets spanning multiple years and cities, offering
+                            stakeholders a
+                            visual and intuitive way to understand complex economic indicators, identify growth
+                            opportunities, and
+                            make data-driven policy recommendations.
+                        </p>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="about-highlight-item">
+                            <div class="about-highlight-icon"><i class="bi bi-database-fill"></i></div>
+                            <div class="about-highlight-text">
+                                <h6>Data-Driven</h6>
+                                <p>Real-world datasets from trusted economic sources</p>
+                            </div>
+                        </div>
+                        <div class="about-highlight-item">
+                            <div class="about-highlight-icon"><i class="bi bi-bar-chart-fill"></i></div>
+                            <div class="about-highlight-text">
+                                <h6>Interactive Visuals</h6>
+                                <p>Power BI dashboards with drill-down capabilities</p>
+                            </div>
+                        </div>
+                        <div class="about-highlight-item">
+                            <div class="about-highlight-icon"><i class="bi bi-globe2"></i></div>
+                            <div class="about-highlight-text">
+                                <h6>Multi-City Analysis</h6>
+                                <p>Comparative study across 18 Indian cities</p>
+                            </div>
+                        </div>
+                        <div class="about-highlight-item">
+                            <div class="about-highlight-icon"><i class="bi bi-lightbulb-fill"></i></div>
+                            <div class="about-highlight-text">
+                                <h6>Actionable Insights</h6>
+                                <p>Key findings for policymakers and researchers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in-right">
+                    <div class="about-image-wrapper">
+                        <div class="about-img-card">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            <h3>Data Meets Decisions</h3>
+                            <p>Transforming raw urban economic data into powerful, visual narratives that inform
+                                strategic
+                                decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 3. FEATURES SECTION ========== -->
+    <section id="features">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-badge"><i class="bi bi-stars"></i> Key Features</span>
+                <h2 class="section-title">Comprehensive Analytics Suite</h2>
+                <p class="section-subtitle">Four core analytical dimensions powering deep insights into urban economic
+                    performance and growth trajectories.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="0">
+                    <div class="feature-card">
+                        <div class="feature-icon blue"><i class="bi bi-currency-dollar"></i></div>
+                        <h5>GDP Analysis</h5>
+                        <p>Track Gross Domestic Product trends across cities with year-over-year comparisons, growth
+                            rate
+                            projections, and regional benchmarking.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon cyan"><i class="bi bi-speedometer2"></i></div>
+                        <h5>Productivity Metrics</h5>
+                        <p>Measure workforce efficiency and output-per-capita across industries. Identify top-performing
+                            cities and
+                            the drivers behind their success.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon purple"><i class="bi bi-pie-chart-fill"></i></div>
+                        <h5>Sector Analysis</h5>
+                        <p>Deep dive into sector-wise contributions — across IT, Manufacturing, Tourism, and
+                            Agriculture
+                            — with interactive breakdowns.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon green"><i class="bi bi-clipboard2-data-fill"></i></div>
+                        <h5>Policy Analysis</h5>
+                        <p>Evaluate the economic impact of government policies on city growth. Compare pre- and
+                            post-policy
+                            performance with visual evidence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 4. STATISTICS SECTION ========== -->
+    <section id="statistics">
+        <div class="container position-relative" style="z-index:1;">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="0">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="bi bi-building"></i></div>
+                        <div class="stat-number" data-count="18" data-suffix="">0</div>
+                        <div class="stat-label">Cities Covered</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="100">
+                    <div class="stat-card">
+                        <div class="stat-icon cyan"><i class="bi bi-graph-up"></i></div>
+                        <div class="stat-number" data-count="19" data-suffix="">0</div>
+                        <div class="stat-label">Policy Milestones</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="200">
+                    <div class="stat-card">
+                        <div class="stat-icon purple"><i class="bi bi-layers-fill"></i></div>
+                        <div class="stat-number" data-count="4" data-suffix="">0</div>
+                        <div class="stat-label">Economic Sectors</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in-up" data-delay="300">
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="bi bi-calendar-range"></i></div>
+                        <div class="stat-number" data-count="7" data-suffix=" Years">0</div>
+                        <div class="stat-label">Historical Data</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========== 6. INTERACTIVE DASHBOARD (EMBED) SECTION ========== -->
+    <section id="dashboard">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-badge"><i class="bi bi-grid-1x2-fill"></i> Interactive Dashboard</span>
+                <h2 class="section-title">Explore the Live Dashboard</h2>
+                <p class="section-subtitle">Interact with the full Power BI dashboard below. Filter by city, sector, or
+                    time
+                    period to discover hidden economic patterns.</p>
+            </div>
+            <div class="dashboard-embed-wrapper scale-in">
+                <div class="embed-header">
+                    <div class="embed-header-left">
+                        <div class="embed-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+                        <div>
+                            <div class="embed-title">City Dynamics Dashboard</div>
+                            <div class="embed-subtitle">Power BI Interactive Report</div>
+                        </div>
+                    </div>
+                    <div class="embed-header-right">
+                        <button class="embed-btn" id="fullscreenBtn"><i class="bi bi-arrows-fullscreen"></i>
+                            Fullscreen</button>
+                        <button class="embed-btn" id="openDashboardBtn"><i class="bi bi-box-arrow-up-right"></i>
+                            Open</button>
+                    </div>
+                </div>
+                <div class="embed-body">
+                    <!--
+            =====================================================
+            🔽  PASTE YOUR POWER BI EMBED IFRAME BELOW  🔽
+            Replace the placeholder div with your iframe tag, e.g.:
+            <iframe title="CityDynamics" width="100%" height="600"
+              src="https://app.powerbi.com/view?r=YOUR_EMBED_ID"
+              frameborder="0" allowFullScreen="true"></iframe>
+            =====================================================
+          -->
+                    <iframe id="powerbiIframe" title="dashboard_intern" width="100%" height="700"
+                        src="https://app.powerbi.com/view?r=eyJrIjoiMjQ1ZmI0ZTUtZThhZi00NDJhLWJjNWMtYmJjNTE5MDk0YjFiIiwidCI6IjhlM2Q5ZGQ3LTAzMWUtNGZkMC04ZWM1LWJjYzI5YTQ0ZjhkZSJ9"
+                        frameborder="0" allowFullScreen="true">
+
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- ========== 7. INSIGHTS SECTION ========== -->
+    <section id="insights">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-badge"><i class="bi bi-lightbulb-fill"></i> Key Insights</span>
+                <h2 class="section-title">What the Data Reveals</h2>
+                <p class="section-subtitle">Critical findings distilled from our comprehensive analysis of urban
+                    economic
+                    indicators and productivity benchmarks.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Insight 1: GDP Growth Analysis -->
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="0">
+                    <div class="insight-card">
+                        <div class="insight-number">1</div>
+                        <h5>GDP Growth Analysis</h5>
+                        <p>The Top 10 Cities by GDP reveal a significant concentration of economic output. Metro cities
+                            consistently dominate the GDP rankings, with the gap between top and bottom performers
+                            widening over the 2019–2026 period.</p>
+                    </div>
+                </div>
+                <!-- Insight 2: Employment vs Unemployment -->
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="100">
+                    <div class="insight-card">
+                        <div class="insight-number">2</div>
+                        <h5>Employment vs Unemployment</h5>
+                        <p>Employment and Unemployment analysis across the 18 cities shows an inverse relationship.
+                            Cities with diversified economies across IT, Manufacturing, and Tourism exhibit lower
+                            unemployment rates and more stable job markets.</p>
+                    </div>
+                </div>
+                <!-- Insight 3: Population vs GDP -->
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="200">
+                    <div class="insight-card">
+                        <div class="insight-number">3</div>
+                        <h5>Population vs GDP</h5>
+                        <p>The scatter plot analysis reveals that higher population does not always translate to higher
+                            GDP. Several smaller cities achieve higher GDP per capita, indicating better productivity
+                            and resource utilization.</p>
+                    </div>
+                </div>
+                <!-- Insight 4: Sector Contribution -->
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="300">
+                    <div class="insight-card">
+                        <div class="insight-number">4</div>
+                        <h5>Sector Contribution</h5>
+                        <p>The treemap visualization shows IT and Manufacturing as the dominant sectors across the 18
+                            cities, while Tourism and Agriculture vary significantly by region. Per capita income
+                            differences across states highlight regional economic disparities.</p>
+                    </div>
+                </div>
+                <!-- Insight 5: Tourism &amp; Income Inequality -->
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="400">
+                    <div class="insight-card">
+                        <div class="insight-number">5</div>
+                        <h5>Tourism &amp; Income Inequality</h5>
+                        <p>Tourism contribution analysis shows coastal and heritage cities benefiting the most. Income
+                            inequality data reveals that cities with heavy reliance on a single sector tend to have
+                            wider income gaps between high and low earners.</p>
+                    </div>
+                </div>
+                <!-- Insight 6: Policy Impact &amp; Regime Analysis -->
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="500">
+                    <div class="insight-card">
+                        <div class="insight-number">6</div>
+                        <h5>Policy Impact &amp; Regime Analysis</h5>
+                        <p>GDP comparison across Pre-Independence, Post-Independence, and Post-LPG eras shows
+                            dramatic economic acceleration after liberalization in 1991. GDP across ruling regimes
+                            reveals varying growth trajectories tied to key policy decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 8. STAKEHOLDERS SECTION ========== -->
+    <section id="stakeholders">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-badge"><i class="bi bi-people-fill"></i> Stakeholders</span>
+                <h2 class="section-title">Who Benefits from This Project</h2>
+                <p class="section-subtitle">Our analytics platform serves a wide range of stakeholders involved in urban
+                    planning, policy formulation, and economic research.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="0">
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-icon blue"><i class="bi bi-bank2"></i></div>
+                        <h5>Government Bodies</h5>
+                        <p>Local and national governments can leverage data-driven insights for informed policy-making,
+                            urban
+                            planning, and resource allocation.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="100">
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-icon purple"><i class="bi bi-mortarboard-fill"></i></div>
+                        <h5>Academic Researchers</h5>
+                        <p>Economists and researchers gain access to structured, visual data to support studies on urban
+                            economic
+                            development and regional disparities.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="200">
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-icon cyan"><i class="bi bi-briefcase-fill"></i></div>
+                        <h5>Business Investors</h5>
+                        <p>Investors can identify high-growth cities and sectors, enabling smarter investment decisions
+                            backed by
+                            real economic data.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="300">
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-icon green"><i class="bi bi-globe-americas"></i></div>
+                        <h5>International Organizations</h5>
+                        <p>Bodies like the World Bank and OECD can use comparative city data for benchmarking and global
+                            economic
+                            assessments.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="400">
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-icon orange"><i class="bi bi-person-workspace"></i></div>
+                        <h5>Urban Planners</h5>
+                        <p>City planners benefit from productivity and sector data to design sustainable infrastructure
+                            and
+                            development strategies.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="500">
+                    <div class="stakeholder-card">
+                        <div class="stakeholder-icon red"><i class="bi bi-newspaper"></i></div>
+                        <h5>Media &amp; Journalists</h5>
+                        <p>Data journalists can use the dashboard to create compelling visual stories about economic
+                            trends and
+                            urban development narratives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 9. TECHNOLOGY STACK SECTION ========== -->
+    <section id="tech-stack">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-badge"><i class="bi bi-cpu-fill"></i> Tech Stack</span>
+                <h2 class="section-title">Built With Modern Technologies</h2>
+                <p class="section-subtitle">A robust technology stack combining powerful data analytics with a polished,
+                    responsive web presentation layer.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-2 col-md-4 col-6 fade-in-up" data-delay="0">
+                    <div class="tech-card">
+                        <div class="tech-icon powerbi"><i class="bi bi-bar-chart-line-fill"></i></div>
+                        <h6>Power BI</h6>
+                        <p>Data Visualization</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 fade-in-up" data-delay="80">
+                    <div class="tech-card">
+                        <div class="tech-icon html"><i class="bi bi-filetype-html"></i></div>
+                        <h6>HTML5</h6>
+                        <p>Structure</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 fade-in-up" data-delay="160">
+                    <div class="tech-card">
+                        <div class="tech-icon css"><i class="bi bi-filetype-css"></i></div>
+                        <h6>CSS3</h6>
+                        <p>Styling</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 fade-in-up" data-delay="240">
+                    <div class="tech-card">
+                        <div class="tech-icon js"><i class="bi bi-filetype-js"></i></div>
+                        <h6>JavaScript</h6>
+                        <p>Interactivity</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 fade-in-up" data-delay="320">
+                    <div class="tech-card">
+                        <div class="tech-icon bootstrap"><i class="bi bi-bootstrap-fill"></i></div>
+                        <h6>Bootstrap 5</h6>
+                        <p>Responsive UI</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 fade-in-up" data-delay="400">
+                    <div class="tech-card">
+                        <div class="tech-icon data"><i class="bi bi-database-fill"></i></div>
+                        <h6>Datasets</h6>
+                        <p>Data Sources</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 10. FUTURE SCOPE SECTION ========== -->
+    <section id="future-scope">
+        <div class="container position-relative" style="z-index:1;">
+            <div class="text-center fade-in-up">
+                <span class="section-badge"><i class="bi bi-rocket-takeoff-fill"></i> Future Scope</span>
+                <h2 class="section-title">Where We Go from Here</h2>
+                <p class="section-subtitle">Planned enhancements and research directions to expand the project's
+                    analytical
+                    capabilities and real-world impact.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="0">
+                    <div class="future-card">
+                        <div class="future-icon"><i class="bi bi-robot"></i></div>
+                        <h5>AI-Powered Predictions</h5>
+                        <p>Integrate machine learning models to forecast GDP growth and productivity trends for the next
+                            5–10 years
+                            based on historical data patterns.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="100">
+                    <div class="future-card">
+                        <div class="future-icon"><i class="bi bi-clock-history"></i></div>
+                        <h5>Real-Time Data Feeds</h5>
+                        <p>Connect live data APIs for real-time economic indicators, enabling stakeholders to monitor
+                            city
+                            performance as events unfold.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="200">
+                    <div class="future-card">
+                        <div class="future-icon"><i class="bi bi-phone-fill"></i></div>
+                        <h5>Mobile Application</h5>
+                        <p>Develop a dedicated mobile app with push notifications for critical economic alerts and
+                            on-the-go
+                            dashboard access.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="300">
+                    <div class="future-card">
+                        <div class="future-icon"><i class="bi bi-map"></i></div>
+                        <h5>Expanded City Coverage</h5>
+                        <p>Scale the analysis beyond 18 cities to cover all state capitals and major tier-2 and tier-3
+                            cities across India for deeper regional insights.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="400">
+                    <div class="future-card">
+                        <div class="future-icon"><i class="bi bi-shield-check"></i></div>
+                        <h5>Blockchain Verification</h5>
+                        <p>Implement blockchain-based data provenance to ensure the authenticity and trustworthiness of
+                            economic
+                            datasets used in the analysis.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-up" data-delay="500">
+                    <div class="future-card">
+                        <div class="future-icon"><i class="bi bi-chat-dots-fill"></i></div>
+                        <h5>Natural Language Queries</h5>
+                        <p>Enable users to ask questions in plain English — like "Which city had the highest GDP growth
+                            in 2024?" —
+                            and receive instant visual answers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 11. CONTACT / DASHBOARD REQUEST SECTION ========== -->
+    <section id="contact">
+        <div class="container">
+            <div class="text-center fade-in-up">
+                <span class="section-badge"><i class="bi bi-clipboard2-check-fill"></i> Request Dashboard Report</span>
+                <h2 class="section-title">Request Dashboard Charts</h2>
+                <p class="section-subtitle">Users can request dashboard charts along with a detailed explanation.
+                    After entering their Name and Email Address, the selected charts and explanation will be sent
+                    through email.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-5 fade-in-left">
+                    <div class="contact-info-card">
+                        <h3>Dashboard Report Service</h3>
+                        <p>Select the charts you need from our Power BI dashboard. Our team will send you a detailed
+                            report with chart visualizations and analytical explanations.</p>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Available Charts</h6>
+                                <p>9 dashboard charts across 3 report pages</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Email</h6>
+                                <p>harinikalimuthu14@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="bi bi-clock-fill"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Response Time</h6>
+                                <p>Reports delivered within 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="bi bi-people-fill"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Team Notified</h6>
+                                <p>All project team members receive your request</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 fade-in-right">
+                    <div class="contact-form-card">
+                        <h4>Select Dashboard Charts</h4>
+                        <p>Choose the charts you need and we'll send a detailed report with explanations.</p>
+                        <form id="contactForm">
+                            <!-- Name & Email -->
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <div class="custom-form-group">
+                                        <label for="contactName" class="form-label mb-2"
+                                            style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">Your
+                                            Name</label>
+                                        <input type="text" class="form-control custom-input" id="contactName"
+                                            name="name" placeholder="e.g. John Doe" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="custom-form-group">
+                                        <label for="contactEmail" class="form-label mb-2"
+                                            style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">Your
+                                            Email</label>
+                                        <input type="email" class="form-control custom-input" id="contactEmail"
+                                            name="email" placeholder="e.g. name@example.com" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Page 1 Charts -->
+                            <div class="chart-selection-group mt-4">
+                                <h6 class="chart-group-title"><i class="bi bi-1-circle-fill"></i> Page 1 — KPI &amp;
+                                    Overview</h6>
+                                <div class="chart-checkboxes">
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="Top 10 Cities by GDP">
+                                        <span class="chart-checkbox-text"><i class="bi bi-bar-chart-fill"></i> Top 10
+                                            Cities by GDP</span>
+                                    </label>
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="Employment & Unemployment Analysis">
+                                        <span class="chart-checkbox-text"><i class="bi bi-people-fill"></i> Employment
+                                            &amp; Unemployment Analysis</span>
+                                    </label>
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="Population vs GDP Scatter Plot">
+                                        <span class="chart-checkbox-text"><i class="bi bi-diagram-3-fill"></i>
+                                            Population vs GDP Scatter Plot</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Page 2 Charts -->
+                            <div class="chart-selection-group mt-3">
+                                <h6 class="chart-group-title"><i class="bi bi-2-circle-fill"></i> Page 2 — Sector &amp;
+                                    Income</h6>
+                                <div class="chart-checkboxes">
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts"
+                                            value="Average Per Capita by State (Donut)">
+                                        <span class="chart-checkbox-text"><i class="bi bi-pie-chart-fill"></i> Average
+                                            Per Capita by State</span>
+                                    </label>
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="Sector Contribution (Treemap)">
+                                        <span class="chart-checkbox-text"><i class="bi bi-grid-fill"></i> Sector
+                                            Contribution (Treemap)</span>
+                                    </label>
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="Tourism Contribution">
+                                        <span class="chart-checkbox-text"><i class="bi bi-airplane-fill"></i> Tourism
+                                            Contribution</span>
+                                    </label>
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="Income Inequality (Clustered Bar)">
+                                        <span class="chart-checkbox-text"><i class="bi bi-bar-chart-steps"></i> Income
+                                            Inequality</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Page 3 Charts -->
+                            <div class="chart-selection-group mt-3">
+                                <h6 class="chart-group-title"><i class="bi bi-3-circle-fill"></i> Page 3 — Policy &amp;
+                                    Regime</h6>
+                                <div class="chart-checkboxes">
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="Key Beneficiary States">
+                                        <span class="chart-checkbox-text"><i class="bi bi-geo-alt-fill"></i> Key
+                                            Beneficiary States</span>
+                                    </label>
+                                    <label class="chart-checkbox-label">
+                                        <input type="checkbox" name="charts" value="GDP Across Ruling Regimes (Matrix)">
+                                        <span class="chart-checkbox-text"><i class="bi bi-table"></i> GDP Across Ruling
+                                            Regimes</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Additional Explanation -->
+                            <div class="custom-form-group mt-4 mb-3">
+                                <label for="contactMessage" class="form-label mb-2"
+                                    style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">Additional
+                                    Notes (Optional)</label>
+                                <textarea class="form-control custom-input" id="contactMessage" name="message"
+                                    placeholder="Type your message here..." style="min-height:120px"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit mt-4">
+                                <i class="bi bi-send-fill"></i> Request Dashboard Report
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 12. FOOTER ========== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 footer-col">
+                    <div class="footer-brand">
+                        <div class="footer-brand-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+                        <h5>UrbanPulse Analytics</h5>
+                    </div>
+                    <p class="footer-desc">Transforming urban economic data into powerful insights for smarter cities
+                        and
+                        better policy decisions.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 footer-col">
+                    <h6 class="footer-heading">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#hero"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="bi bi-chevron-right"></i> About</a></li>
+                        <li><a href="#features"><i class="bi bi-chevron-right"></i> Features</a></li>
+                        <li><a href="#dashboard"><i class="bi bi-chevron-right"></i> Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 footer-col">
+                    <h6 class="footer-heading">Explore</h6>
+                    <ul class="footer-links">
+                        <li><a href="#insights"><i class="bi bi-chevron-right"></i> Insights</a></li>
+                        <li><a href="#stakeholders"><i class="bi bi-chevron-right"></i> Stakeholders</a></li>
+                        <li><a href="#tech-stack"><i class="bi bi-chevron-right"></i> Tech Stack</a></li>
+                        <li><a href="#future-scope"><i class="bi bi-chevron-right"></i> Future Scope</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 footer-col">
+                    <h6 class="footer-heading">Project Info</h6>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Final Year Project</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Engineering Department</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Academic Year 2025-26</a></li>
+                        <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 UrbanPulse Analytics. Crafted with <i class="bi bi-heart-fill"
+                        style="color:var(--danger)"></i>
+                    as a
+                    Final Year Engineering Project.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll-to-Top Button -->
+    <button class="scroll-to-top" aria-label="Scroll to top"><i class="bi bi-chevron-up"></i></button>
+
+    <!-- ========== SUCCESS MODAL ========== -->
+    <div id="successModal" class="success-modal-overlay" role="dialog" aria-modal="true"
+        aria-labelledby="successModalTitle" style="display:none;">
+        <div class="success-modal-card">
+            <div class="success-modal-icon">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h4 id="successModalTitle" class="success-modal-title">Request Sent Successfully!</h4>
+            <p id="successModalMessage" class="success-modal-message"></p>
+            <p class="success-modal-note">Our team will review your selected charts and send the requested report with
+                explanations.</p>
+            <button id="successModalClose" class="success-modal-btn">Done</button>
+        </div>
+    </div>
+
+    <!-- ========== ERROR TOAST ========== -->
+    <div id="errorToast" class="error-toast" role="alert" style="display:none;">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span id="errorToastMessage">Something went wrong while sending your request. Please try again.</span>
+        <button id="errorToastClose" class="error-toast-close" aria-label="Close">&times;</button>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <div class="chatbot-container">
+        <button id="chatToggle" class="chat-toggle" aria-label="Open chatbot">
+            <i class="bi bi-chat-dots-fill"></i>
+        </button>
+        <div id="chatWindow" class="chat-window" style="display:none;">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <div class="chat-header-icon"><i class="bi bi-robot"></i></div>
+                    <div>
+                        <div class="chat-header-title">City Dynamics Assistant</div>
+                        <div class="chat-header-status"><span class="chat-status-dot"></span> Online</div>
+                    </div>
+                </div>
+                <button id="closeChat" class="chat-close-btn" aria-label="Close chat"><i
+                        class="bi bi-x-lg"></i></button>
+            </div>
+
+            <div id="chatMessages" class="chat-messages">
+                <div class="bot-message">
+                    👋 Hello! I'm your <strong>Dashboard Assistant</strong>. Ask me anything about GDP, Population,
+                    Sectors, Policies, or any chart in the dashboard!
+                </div>
+            </div>
+
+            <div class="quick-questions" id="quickQuestions">
+                <div class="quick-questions-label"><i class="bi bi-lightning-charge-fill"></i> Quick Questions</div>
+                <div class="quick-questions-grid">
+                    <button class="quick-btn" onclick="askQuestion('What is GDP?')"><i
+                            class="bi bi-currency-dollar"></i> What is GDP?</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain Dashboard')"><i
+                            class="bi bi-grid-1x2-fill"></i> Explain Dashboard</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain KPI Cards')"><i
+                            class="bi bi-card-checklist"></i> Explain KPI Cards</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain Population vs GDP')"><i
+                            class="bi bi-diagram-3-fill"></i> Population vs GDP</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain Tourism Contribution')"><i
+                            class="bi bi-airplane-fill"></i> Tourism Contribution</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain Treemap')"><i class="bi bi-grid-fill"></i>
+                        Explain Treemap</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain Policy Analysis')"><i
+                            class="bi bi-clipboard2-data-fill"></i> Policy Analysis</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain GDP Across Regimes')"><i
+                            class="bi bi-table"></i> GDP Across Regimes</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain Income Inequality')"><i
+                            class="bi bi-bar-chart-steps"></i> Income Inequality</button>
+                    <button class="quick-btn" onclick="askQuestion('Explain Employment Chart')"><i
+                            class="bi bi-people-fill"></i> Employment Chart</button>
+                    <button class="quick-btn" onclick="askQuestion('Future Scope')"><i
+                            class="bi bi-rocket-takeoff-fill"></i> Future Scope</button>
+                    <button class="quick-btn" onclick="askQuestion('About Project')"><i
+                            class="bi bi-info-circle-fill"></i> About Project</button>
+                    <button class="quick-btn" onclick="askQuestion('Contact Team')"><i class="bi bi-envelope-fill"></i>
+                        Contact Team</button>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="userMessage" placeholder="Ask about GDP, Tourism, Policy..." autocomplete="off">
+                <button id="sendMessage" aria-label="Send message"><i class="bi bi-send-fill"></i></button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+        emailjs.init({
+            publicKey: "bdnw3hz2AFk5GNtNo",
+        });
+    </script>
+
+    <!-- Your JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
